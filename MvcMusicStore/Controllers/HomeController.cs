@@ -10,6 +10,7 @@ namespace MvcMusicStore.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "The Home Page";
             return View();
         }
 
