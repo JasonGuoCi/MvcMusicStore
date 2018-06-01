@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0017e958-a5af-4783-bb24-2264b34173b1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
-    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
-    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -19,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.123.3:555/SampleService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.5:555/SampleService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SampleService.disco" MetadataType="Disco" ID="2983261d-3b1f-4902-bdc2-64955096bb35" SourceId="1" SourceUrl="http://192.168.123.3:555/SampleService.asmx?disco" />
-    <MetadataFile FileName="SampleService.wsdl" MetadataType="Wsdl" ID="07663ea7-aedb-45e3-b6d3-d5f1e9e14ce7" SourceId="1" SourceUrl="http://192.168.123.3:555/SampleService.asmx?wsdl" />
+    <MetadataFile FileName="SampleService1.wsdl" MetadataType="Wsdl" ID="4f700293-d1c5-4b64-bbd7-32b7868e6018" SourceId="1" SourceUrl="http://192.168.1.5:555/SampleService.asmx?wsdl" />
+    <MetadataFile FileName="SampleService1.disco" MetadataType="Disco" ID="2f10a100-202e-4177-ac97-89d7d2b183c1" SourceId="1" SourceUrl="http://192.168.1.5:555/SampleService.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

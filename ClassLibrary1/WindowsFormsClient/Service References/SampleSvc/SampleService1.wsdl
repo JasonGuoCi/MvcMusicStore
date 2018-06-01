@@ -94,10 +94,10 @@
   </wsdl:binding>
   <wsdl:service name="SampleService">
     <wsdl:port name="SampleServiceSoap" binding="tns:SampleServiceSoap">
-      <soap:address location="http://192.168.123.3:555/SampleService.asmx" />
+      <soap:address location="http://192.168.1.5:555/SampleService.asmx" />
     </wsdl:port>
     <wsdl:port name="SampleServiceSoap12" binding="tns:SampleServiceSoap12">
-      <soap12:address location="http://192.168.123.3:555/SampleService.asmx" />
+      <soap12:address location="http://192.168.1.5:555/SampleService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

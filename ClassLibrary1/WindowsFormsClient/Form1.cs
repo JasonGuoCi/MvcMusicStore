@@ -23,11 +23,22 @@ namespace WindowsFormsClient
 
             // WebServiceSample.SampleServiceSoapClient svc = new WebServiceSample.SampleServiceSoapClient();
             SampleSvc.SampleServiceSoapClient svc = new SampleSvc.SampleServiceSoapClient();
-            txtStr2.Text = svc.ReverseString(str1);
+            svc.ReverseStringCompleted += Svc_ReverseStringCompleted;
+            //txtStr2.Text = svc.ReverseString(str1);
+            svc.ReverseStringAsync(str1);
 
+        }
 
-
-
+        private void Svc_ReverseStringCompleted(object sender, SampleSvc.ReverseStringCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                txtStr2.Text = e.Result;
+            }
+            else
+            {
+                MessageBox.Show(e.Error.ToString());
+            }
         }
     }
 }

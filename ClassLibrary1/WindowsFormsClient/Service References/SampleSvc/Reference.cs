@@ -19,15 +19,19 @@ namespace WindowsFormsClient.SampleSvc {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         WindowsFormsClient.SampleSvc.HelloWorldResponse HelloWorld(WindowsFormsClient.SampleSvc.HelloWorldRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<WindowsFormsClient.SampleSvc.HelloWorldResponse> HelloWorldAsync(WindowsFormsClient.SampleSvc.HelloWorldRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
+        System.IAsyncResult BeginHelloWorld(WindowsFormsClient.SampleSvc.HelloWorldRequest request, System.AsyncCallback callback, object asyncState);
+        
+        WindowsFormsClient.SampleSvc.HelloWorldResponse EndHelloWorld(System.IAsyncResult result);
         
         // CODEGEN: Generating message contract since element name str from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReverseString", ReplyAction="*")]
         WindowsFormsClient.SampleSvc.ReverseStringResponse ReverseString(WindowsFormsClient.SampleSvc.ReverseStringRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReverseString", ReplyAction="*")]
-        System.Threading.Tasks.Task<WindowsFormsClient.SampleSvc.ReverseStringResponse> ReverseStringAsync(WindowsFormsClient.SampleSvc.ReverseStringRequest request);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/ReverseString", ReplyAction="*")]
+        System.IAsyncResult BeginReverseString(WindowsFormsClient.SampleSvc.ReverseStringRequest request, System.AsyncCallback callback, object asyncState);
+        
+        WindowsFormsClient.SampleSvc.ReverseStringResponse EndReverseString(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -165,7 +169,57 @@ namespace WindowsFormsClient.SampleSvc {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ReverseStringCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ReverseStringCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class SampleServiceSoapClient : System.ServiceModel.ClientBase<WindowsFormsClient.SampleSvc.SampleServiceSoap>, WindowsFormsClient.SampleSvc.SampleServiceSoap {
+        
+        private BeginOperationDelegate onBeginHelloWorldDelegate;
+        
+        private EndOperationDelegate onEndHelloWorldDelegate;
+        
+        private System.Threading.SendOrPostCallback onHelloWorldCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginReverseStringDelegate;
+        
+        private EndOperationDelegate onEndReverseStringDelegate;
+        
+        private System.Threading.SendOrPostCallback onReverseStringCompletedDelegate;
         
         public SampleServiceSoapClient() {
         }
@@ -186,6 +240,10 @@ namespace WindowsFormsClient.SampleSvc {
                 base(binding, remoteAddress) {
         }
         
+        public event System.EventHandler<HelloWorldCompletedEventArgs> HelloWorldCompleted;
+        
+        public event System.EventHandler<ReverseStringCompletedEventArgs> ReverseStringCompleted;
+        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         WindowsFormsClient.SampleSvc.HelloWorldResponse WindowsFormsClient.SampleSvc.SampleServiceSoap.HelloWorld(WindowsFormsClient.SampleSvc.HelloWorldRequest request) {
             return base.Channel.HelloWorld(request);
@@ -199,14 +257,60 @@ namespace WindowsFormsClient.SampleSvc {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WindowsFormsClient.SampleSvc.HelloWorldResponse> WindowsFormsClient.SampleSvc.SampleServiceSoap.HelloWorldAsync(WindowsFormsClient.SampleSvc.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
+        System.IAsyncResult WindowsFormsClient.SampleSvc.SampleServiceSoap.BeginHelloWorld(WindowsFormsClient.SampleSvc.HelloWorldRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginHelloWorld(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsClient.SampleSvc.HelloWorldResponse> HelloWorldAsync() {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginHelloWorld(System.AsyncCallback callback, object asyncState) {
             WindowsFormsClient.SampleSvc.HelloWorldRequest inValue = new WindowsFormsClient.SampleSvc.HelloWorldRequest();
             inValue.Body = new WindowsFormsClient.SampleSvc.HelloWorldRequestBody();
-            return ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).HelloWorldAsync(inValue);
+            return ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).BeginHelloWorld(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsClient.SampleSvc.HelloWorldResponse WindowsFormsClient.SampleSvc.SampleServiceSoap.EndHelloWorld(System.IAsyncResult result) {
+            return base.Channel.EndHelloWorld(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndHelloWorld(System.IAsyncResult result) {
+            WindowsFormsClient.SampleSvc.HelloWorldResponse retVal = ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).EndHelloWorld(result);
+            return retVal.Body.HelloWorldResult;
+        }
+        
+        private System.IAsyncResult OnBeginHelloWorld(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginHelloWorld(callback, asyncState);
+        }
+        
+        private object[] OnEndHelloWorld(System.IAsyncResult result) {
+            string retVal = this.EndHelloWorld(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnHelloWorldCompleted(object state) {
+            if ((this.HelloWorldCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void HelloWorldAsync() {
+            this.HelloWorldAsync(null);
+        }
+        
+        public void HelloWorldAsync(object userState) {
+            if ((this.onBeginHelloWorldDelegate == null)) {
+                this.onBeginHelloWorldDelegate = new BeginOperationDelegate(this.OnBeginHelloWorld);
+            }
+            if ((this.onEndHelloWorldDelegate == null)) {
+                this.onEndHelloWorldDelegate = new EndOperationDelegate(this.OnEndHelloWorld);
+            }
+            if ((this.onHelloWorldCompletedDelegate == null)) {
+                this.onHelloWorldCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnHelloWorldCompleted);
+            }
+            base.InvokeAsync(this.onBeginHelloWorldDelegate, null, this.onEndHelloWorldDelegate, this.onHelloWorldCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -223,15 +327,63 @@ namespace WindowsFormsClient.SampleSvc {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<WindowsFormsClient.SampleSvc.ReverseStringResponse> WindowsFormsClient.SampleSvc.SampleServiceSoap.ReverseStringAsync(WindowsFormsClient.SampleSvc.ReverseStringRequest request) {
-            return base.Channel.ReverseStringAsync(request);
+        System.IAsyncResult WindowsFormsClient.SampleSvc.SampleServiceSoap.BeginReverseString(WindowsFormsClient.SampleSvc.ReverseStringRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginReverseString(request, callback, asyncState);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsClient.SampleSvc.ReverseStringResponse> ReverseStringAsync(string str) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginReverseString(string str, System.AsyncCallback callback, object asyncState) {
             WindowsFormsClient.SampleSvc.ReverseStringRequest inValue = new WindowsFormsClient.SampleSvc.ReverseStringRequest();
             inValue.Body = new WindowsFormsClient.SampleSvc.ReverseStringRequestBody();
             inValue.Body.str = str;
-            return ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).ReverseStringAsync(inValue);
+            return ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).BeginReverseString(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsClient.SampleSvc.ReverseStringResponse WindowsFormsClient.SampleSvc.SampleServiceSoap.EndReverseString(System.IAsyncResult result) {
+            return base.Channel.EndReverseString(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndReverseString(System.IAsyncResult result) {
+            WindowsFormsClient.SampleSvc.ReverseStringResponse retVal = ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).EndReverseString(result);
+            return retVal.Body.ReverseStringResult;
+        }
+        
+        private System.IAsyncResult OnBeginReverseString(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string str = ((string)(inValues[0]));
+            return this.BeginReverseString(str, callback, asyncState);
+        }
+        
+        private object[] OnEndReverseString(System.IAsyncResult result) {
+            string retVal = this.EndReverseString(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnReverseStringCompleted(object state) {
+            if ((this.ReverseStringCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ReverseStringCompleted(this, new ReverseStringCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ReverseStringAsync(string str) {
+            this.ReverseStringAsync(str, null);
+        }
+        
+        public void ReverseStringAsync(string str, object userState) {
+            if ((this.onBeginReverseStringDelegate == null)) {
+                this.onBeginReverseStringDelegate = new BeginOperationDelegate(this.OnBeginReverseString);
+            }
+            if ((this.onEndReverseStringDelegate == null)) {
+                this.onEndReverseStringDelegate = new EndOperationDelegate(this.OnEndReverseString);
+            }
+            if ((this.onReverseStringCompletedDelegate == null)) {
+                this.onReverseStringCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnReverseStringCompleted);
+            }
+            base.InvokeAsync(this.onBeginReverseStringDelegate, new object[] {
+                        str}, this.onEndReverseStringDelegate, this.onReverseStringCompletedDelegate, userState);
         }
     }
 }
