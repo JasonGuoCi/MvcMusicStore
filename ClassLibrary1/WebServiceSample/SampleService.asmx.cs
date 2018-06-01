@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Services;
 using WebServiceSample.Entities;
 
@@ -33,7 +34,11 @@ namespace WebServiceSample
         {
             return new string(str.Reverse().ToArray());
         }
-
+        /// <summary>
+        /// get weather by the city and temperature type
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [WebMethod]
         public GetWeatherResponse GetWeature(GetWeatherRequest req)
         {
@@ -62,5 +67,24 @@ namespace WebServiceSample
 
             return resp;
         }
+
+        //[WebMethod]
+        //public ReserveSeatResponse GetSeat(ReserveSeatRequest req)
+        //{
+        //    ReserveSeatResponse resp = new ReserveSeatResponse();
+        //    object c = HttpRuntime.Cache[req.Name];
+        //    if (c == null)
+        //    {
+        //        resp.Name = req.Name;
+        //        resp.Seat = req.Seat;
+        //        resp.Row = req.Row;
+        //        HttpRuntime.Cache.Add(req.Name, req, null, DateTime.MaxValue, TimeSpan.FromMinutes(30), CacheItemPriority.Normal, null);
+        //    }
+        //    else
+        //    {
+        //        Random r=new Random(10,)
+        //    }
+        //    return resp;
+        //}
     }
 }
