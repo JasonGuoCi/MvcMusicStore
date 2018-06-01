@@ -26,6 +26,46 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetWeature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GetWeatherRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetWeatherRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemperatureType" type="tns:TemperatureType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="TemperatureType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Fahrenheit" />
+          <s:enumeration value="Celsius" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetWeatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeatureResult" type="tns:GetWeatherResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetWeatherResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Condition" type="tns:TemperatureCondition" />
+          <s:element minOccurs="1" maxOccurs="1" name="Temperature" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="TemperatureCondition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Rainy" />
+          <s:enumeration value="Sunny" />
+          <s:enumeration value="Cloudy" />
+          <s:enumeration value="ThunderStorm" />
+        </s:restriction>
+      </s:simpleType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -40,6 +80,12 @@
   <wsdl:message name="ReverseStringSoapOut">
     <wsdl:part name="parameters" element="tns:ReverseStringResponse" />
   </wsdl:message>
+  <wsdl:message name="GetWeatureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWeature" />
+  </wsdl:message>
+  <wsdl:message name="GetWeatureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWeatureResponse" />
+  </wsdl:message>
   <wsdl:portType name="SampleServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -48,6 +94,10 @@
     <wsdl:operation name="ReverseString">
       <wsdl:input message="tns:ReverseStringSoapIn" />
       <wsdl:output message="tns:ReverseStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWeature">
+      <wsdl:input message="tns:GetWeatureSoapIn" />
+      <wsdl:output message="tns:GetWeatureSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SampleServiceSoap" type="tns:SampleServiceSoap">
@@ -70,6 +120,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetWeature">
+      <soap:operation soapAction="http://tempuri.org/GetWeature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SampleServiceSoap12" type="tns:SampleServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -84,6 +143,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReverseString">
       <soap12:operation soapAction="http://tempuri.org/ReverseString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeature">
+      <soap12:operation soapAction="http://tempuri.org/GetWeature" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

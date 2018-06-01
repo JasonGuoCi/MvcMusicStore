@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using WebServiceSample.Entities;
 
 namespace WebServiceSample
 {
@@ -31,6 +32,35 @@ namespace WebServiceSample
         public string ReverseString(string str)
         {
             return new string(str.Reverse().ToArray());
+        }
+
+        [WebMethod]
+        public GetWeatherResponse GetWeature(GetWeatherRequest req)
+        {
+            var resp = new GetWeatherResponse();
+            var r = new Random();
+
+            int celsius = r.Next(-20, 50);
+
+            if (req.TemperatureType == TemperatureType.Celsius)
+            {
+                resp.Temperature = celsius;
+            }
+            else
+            {
+                resp.Temperature = (212 - 32) / 100 * celsius + 32;
+            }
+
+            if (req.City == "Redmond")
+            {
+                resp.Condition = TemperatureCondition.Rainy;
+            }
+            else
+            {
+                resp.Condition = (TemperatureCondition)r.Next(0, 3);
+            }
+
+            return resp;
         }
     }
 }

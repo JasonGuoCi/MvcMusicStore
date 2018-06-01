@@ -9,7 +9,156 @@
 //------------------------------------------------------------------------------
 
 namespace WindowsFormsClient.SampleSvc {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetWeatherRequest", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class GetWeatherRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
+        
+        private WindowsFormsClient.SampleSvc.TemperatureType TemperatureTypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public WindowsFormsClient.SampleSvc.TemperatureType TemperatureType {
+            get {
+                return this.TemperatureTypeField;
+            }
+            set {
+                if ((this.TemperatureTypeField.Equals(value) != true)) {
+                    this.TemperatureTypeField = value;
+                    this.RaisePropertyChanged("TemperatureType");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TemperatureType", Namespace="http://tempuri.org/")]
+    public enum TemperatureType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Fahrenheit = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Celsius = 1,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetWeatherResponse", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class GetWeatherResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private WindowsFormsClient.SampleSvc.TemperatureCondition ConditionField;
+        
+        private int TemperatureField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public WindowsFormsClient.SampleSvc.TemperatureCondition Condition {
+            get {
+                return this.ConditionField;
+            }
+            set {
+                if ((this.ConditionField.Equals(value) != true)) {
+                    this.ConditionField = value;
+                    this.RaisePropertyChanged("Condition");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Temperature {
+            get {
+                return this.TemperatureField;
+            }
+            set {
+                if ((this.TemperatureField.Equals(value) != true)) {
+                    this.TemperatureField = value;
+                    this.RaisePropertyChanged("Temperature");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TemperatureCondition", Namespace="http://tempuri.org/")]
+    public enum TemperatureCondition : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Rainy = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Sunny = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Cloudy = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ThunderStorm = 3,
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SampleSvc.SampleServiceSoap")]
@@ -32,6 +181,15 @@ namespace WindowsFormsClient.SampleSvc {
         System.IAsyncResult BeginReverseString(WindowsFormsClient.SampleSvc.ReverseStringRequest request, System.AsyncCallback callback, object asyncState);
         
         WindowsFormsClient.SampleSvc.ReverseStringResponse EndReverseString(System.IAsyncResult result);
+        
+        // CODEGEN: Generating message contract since element name req from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetWeature", ReplyAction="*")]
+        WindowsFormsClient.SampleSvc.GetWeatureResponse GetWeature(WindowsFormsClient.SampleSvc.GetWeatureRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetWeature", ReplyAction="*")]
+        System.IAsyncResult BeginGetWeature(WindowsFormsClient.SampleSvc.GetWeatureRequest request, System.AsyncCallback callback, object asyncState);
+        
+        WindowsFormsClient.SampleSvc.GetWeatureResponse EndGetWeature(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -163,6 +321,74 @@ namespace WindowsFormsClient.SampleSvc {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetWeatureRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetWeature", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsClient.SampleSvc.GetWeatureRequestBody Body;
+        
+        public GetWeatureRequest() {
+        }
+        
+        public GetWeatureRequest(WindowsFormsClient.SampleSvc.GetWeatureRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetWeatureRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsClient.SampleSvc.GetWeatherRequest req;
+        
+        public GetWeatureRequestBody() {
+        }
+        
+        public GetWeatureRequestBody(WindowsFormsClient.SampleSvc.GetWeatherRequest req) {
+            this.req = req;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetWeatureResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetWeatureResponse", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsClient.SampleSvc.GetWeatureResponseBody Body;
+        
+        public GetWeatureResponse() {
+        }
+        
+        public GetWeatureResponse(WindowsFormsClient.SampleSvc.GetWeatureResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetWeatureResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsClient.SampleSvc.GetWeatherResponse GetWeatureResult;
+        
+        public GetWeatureResponseBody() {
+        }
+        
+        public GetWeatureResponseBody(WindowsFormsClient.SampleSvc.GetWeatherResponse GetWeatureResult) {
+            this.GetWeatureResult = GetWeatureResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface SampleServiceSoapChannel : WindowsFormsClient.SampleSvc.SampleServiceSoap, System.ServiceModel.IClientChannel {
     }
@@ -207,6 +433,25 @@ namespace WindowsFormsClient.SampleSvc {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetWeatureCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetWeatureCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public WindowsFormsClient.SampleSvc.GetWeatherResponse Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((WindowsFormsClient.SampleSvc.GetWeatherResponse)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class SampleServiceSoapClient : System.ServiceModel.ClientBase<WindowsFormsClient.SampleSvc.SampleServiceSoap>, WindowsFormsClient.SampleSvc.SampleServiceSoap {
         
         private BeginOperationDelegate onBeginHelloWorldDelegate;
@@ -220,6 +465,12 @@ namespace WindowsFormsClient.SampleSvc {
         private EndOperationDelegate onEndReverseStringDelegate;
         
         private System.Threading.SendOrPostCallback onReverseStringCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetWeatureDelegate;
+        
+        private EndOperationDelegate onEndGetWeatureDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetWeatureCompletedDelegate;
         
         public SampleServiceSoapClient() {
         }
@@ -243,6 +494,8 @@ namespace WindowsFormsClient.SampleSvc {
         public event System.EventHandler<HelloWorldCompletedEventArgs> HelloWorldCompleted;
         
         public event System.EventHandler<ReverseStringCompletedEventArgs> ReverseStringCompleted;
+        
+        public event System.EventHandler<GetWeatureCompletedEventArgs> GetWeatureCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         WindowsFormsClient.SampleSvc.HelloWorldResponse WindowsFormsClient.SampleSvc.SampleServiceSoap.HelloWorld(WindowsFormsClient.SampleSvc.HelloWorldRequest request) {
@@ -384,6 +637,79 @@ namespace WindowsFormsClient.SampleSvc {
             }
             base.InvokeAsync(this.onBeginReverseStringDelegate, new object[] {
                         str}, this.onEndReverseStringDelegate, this.onReverseStringCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsClient.SampleSvc.GetWeatureResponse WindowsFormsClient.SampleSvc.SampleServiceSoap.GetWeature(WindowsFormsClient.SampleSvc.GetWeatureRequest request) {
+            return base.Channel.GetWeature(request);
+        }
+        
+        public WindowsFormsClient.SampleSvc.GetWeatherResponse GetWeature(WindowsFormsClient.SampleSvc.GetWeatherRequest req) {
+            WindowsFormsClient.SampleSvc.GetWeatureRequest inValue = new WindowsFormsClient.SampleSvc.GetWeatureRequest();
+            inValue.Body = new WindowsFormsClient.SampleSvc.GetWeatureRequestBody();
+            inValue.Body.req = req;
+            WindowsFormsClient.SampleSvc.GetWeatureResponse retVal = ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).GetWeature(inValue);
+            return retVal.Body.GetWeatureResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult WindowsFormsClient.SampleSvc.SampleServiceSoap.BeginGetWeature(WindowsFormsClient.SampleSvc.GetWeatureRequest request, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetWeature(request, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetWeature(WindowsFormsClient.SampleSvc.GetWeatherRequest req, System.AsyncCallback callback, object asyncState) {
+            WindowsFormsClient.SampleSvc.GetWeatureRequest inValue = new WindowsFormsClient.SampleSvc.GetWeatureRequest();
+            inValue.Body = new WindowsFormsClient.SampleSvc.GetWeatureRequestBody();
+            inValue.Body.req = req;
+            return ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).BeginGetWeature(inValue, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsClient.SampleSvc.GetWeatureResponse WindowsFormsClient.SampleSvc.SampleServiceSoap.EndGetWeature(System.IAsyncResult result) {
+            return base.Channel.EndGetWeature(result);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public WindowsFormsClient.SampleSvc.GetWeatherResponse EndGetWeature(System.IAsyncResult result) {
+            WindowsFormsClient.SampleSvc.GetWeatureResponse retVal = ((WindowsFormsClient.SampleSvc.SampleServiceSoap)(this)).EndGetWeature(result);
+            return retVal.Body.GetWeatureResult;
+        }
+        
+        private System.IAsyncResult OnBeginGetWeature(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            WindowsFormsClient.SampleSvc.GetWeatherRequest req = ((WindowsFormsClient.SampleSvc.GetWeatherRequest)(inValues[0]));
+            return this.BeginGetWeature(req, callback, asyncState);
+        }
+        
+        private object[] OnEndGetWeature(System.IAsyncResult result) {
+            WindowsFormsClient.SampleSvc.GetWeatherResponse retVal = this.EndGetWeature(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetWeatureCompleted(object state) {
+            if ((this.GetWeatureCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetWeatureCompleted(this, new GetWeatureCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetWeatureAsync(WindowsFormsClient.SampleSvc.GetWeatherRequest req) {
+            this.GetWeatureAsync(req, null);
+        }
+        
+        public void GetWeatureAsync(WindowsFormsClient.SampleSvc.GetWeatherRequest req, object userState) {
+            if ((this.onBeginGetWeatureDelegate == null)) {
+                this.onBeginGetWeatureDelegate = new BeginOperationDelegate(this.OnBeginGetWeature);
+            }
+            if ((this.onEndGetWeatureDelegate == null)) {
+                this.onEndGetWeatureDelegate = new EndOperationDelegate(this.OnEndGetWeature);
+            }
+            if ((this.onGetWeatureCompletedDelegate == null)) {
+                this.onGetWeatureCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetWeatureCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetWeatureDelegate, new object[] {
+                        req}, this.onEndGetWeatureDelegate, this.onGetWeatureCompletedDelegate, userState);
         }
     }
 }
