@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,11 @@ namespace JExe.Test
             //Console.Write(str);
 
             //B b = new B();
-            GetFlag(3);
+            //GetFlag(3);
+            //ArrayList al = new ArrayList();
+            //int i = 10;
+            //al.Add(i);
+            //string l = (string)al[0];
             Console.ReadKey();
         }
 

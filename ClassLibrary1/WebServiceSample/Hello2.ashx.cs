@@ -18,14 +18,17 @@ namespace WebServiceSample
             //context.Response.Write("Hello World");
             string con = context.Server.MapPath("Hello2.html");
             context.Response.Write(File.ReadAllText(con));
-            string userName = context.Request["userName"];
-            if (string.IsNullOrEmpty(userName))
+
+            //string userName = context.Request["userName"];
+            //判断是不是提交进入，根据一个隐藏字段ispostback
+            string ispostback = context.Request["ispostback"];
+            if (ispostback == "true")
             {
-                context.Response.Write("直接进入");
+                context.Response.Write("提交进入");
             }
             else
             {
-                context.Response.Write("提交进入");
+                context.Response.Write("直接进入");
             }
 
         }
