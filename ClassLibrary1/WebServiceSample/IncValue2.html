@@ -5,10 +5,13 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <form action="Hello2.ashx">
+    <form action="IncValue2.ashx">
         <input type="hidden" name="ispostback" value="true" />
-        姓名：<input type="text" name="userName" value="@value" /><input type="submit" value="提交" />@msg
+        <input type="hidden" name="num" value="@value" />
+        <div>
+            @value
+        </div>
+        <input type="submit" value="自增" />
     </form>
-
 </body>
 </html>

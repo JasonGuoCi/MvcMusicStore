@@ -94,12 +94,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="IncValue1.html" />
+    <Content Include="IncValue2.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Hello.ashx" />
     <Content Include="Hello2.ashx" />
+    <Content Include="IncValue1.ashx" />
+    <Content Include="IncValue2.ashx" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -126,6 +130,12 @@
     </Compile>
     <Compile Include="Hello2.ashx.cs">
       <DependentUpon>Hello2.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="IncValue1.ashx.cs">
+      <DependentUpon>IncValue1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="IncValue2.ashx.cs">
+      <DependentUpon>IncValue2.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleService.asmx.cs">
