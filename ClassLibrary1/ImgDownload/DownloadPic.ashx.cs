@@ -1,6 +1,8 @@
 ﻿using ImgDownload.DAL.DataSetPicTableAdapters;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 using System.Web.SessionState;
@@ -34,7 +36,14 @@ namespace ImgDownload
                 var user = data.Single();
                 if (user.Type == 0)//普通用户
                 {
-
+                    using (Bitmap bitmap = new Bitmap(context.Server.MapPath("Imgs/" + fileName)))
+                    {
+                        using (Graphics g = Graphics.FromImage(bitmap))
+                        {
+                            g.DrawString("免费用户试用--" + user.UserName, new Font("宋体", 20), Brushes.Red, 0, 0);
+                        }
+                        bitmap.Save(context.Response.OutputStream, ImageFormat.Jpeg);//为了演示，效率不高
+                    }
                 }
                 else//收费用户
                 {
