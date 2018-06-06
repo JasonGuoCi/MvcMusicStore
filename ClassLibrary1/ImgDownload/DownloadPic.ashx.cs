@@ -47,6 +47,11 @@ namespace ImgDownload
                 }
                 else//收费用户
                 {
+                    //http://localhost:4253/DownloadPic.ashx?fileName=../DownloadPic.ashx.cs
+                    if (fileName.Contains("/"))
+                    {
+                        return;
+                    }
                     context.Response.WriteFile("Imgs/" + fileName);//有攻击漏洞
                 }
             }
