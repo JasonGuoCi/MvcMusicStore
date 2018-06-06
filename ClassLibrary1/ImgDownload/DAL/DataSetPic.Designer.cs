@@ -287,6 +287,10 @@ namespace ImgDownload.DAL {
             
             private global::System.Data.DataColumn columnType;
             
+            private global::System.Data.DataColumn columnErrorTimes;
+            
+            private global::System.Data.DataColumn columnLastErrorTime;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public T_UsersDataTable() {
@@ -354,6 +358,22 @@ namespace ImgDownload.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ErrorTimesColumn {
+                get {
+                    return this.columnErrorTimes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LastErrorTimeColumn {
+                get {
+                    return this.columnLastErrorTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +409,15 @@ namespace ImgDownload.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public T_UsersRow AddT_UsersRow(string UserName, string Password, int Type) {
+            public T_UsersRow AddT_UsersRow(string UserName, string Password, int Type, int ErrorTimes, System.DateTime LastErrorTime) {
                 T_UsersRow rowT_UsersRow = ((T_UsersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         UserName,
                         Password,
-                        Type};
+                        Type,
+                        ErrorTimes,
+                        LastErrorTime};
                 rowT_UsersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowT_UsersRow);
                 return rowT_UsersRow;
@@ -429,6 +451,8 @@ namespace ImgDownload.DAL {
                 this.columnUserName = base.Columns["UserName"];
                 this.columnPassword = base.Columns["Password"];
                 this.columnType = base.Columns["Type"];
+                this.columnErrorTimes = base.Columns["ErrorTimes"];
+                this.columnLastErrorTime = base.Columns["LastErrorTime"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -442,6 +466,10 @@ namespace ImgDownload.DAL {
                 base.Columns.Add(this.columnPassword);
                 this.columnType = new global::System.Data.DataColumn("Type", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnType);
+                this.columnErrorTimes = new global::System.Data.DataColumn("ErrorTimes", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnErrorTimes);
+                this.columnLastErrorTime = new global::System.Data.DataColumn("LastErrorTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLastErrorTime);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -653,6 +681,38 @@ namespace ImgDownload.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int ErrorTimes {
+                get {
+                    try {
+                        return ((int)(this[this.tableT_Users.ErrorTimesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ErrorTimes\' in table \'T_Users\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableT_Users.ErrorTimesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime LastErrorTime {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableT_Users.LastErrorTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LastErrorTime\' in table \'T_Users\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableT_Users.LastErrorTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsUserNameNull() {
                 return this.IsNull(this.tableT_Users.UserNameColumn);
             }
@@ -685,6 +745,30 @@ namespace ImgDownload.DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTypeNull() {
                 this[this.tableT_Users.TypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsErrorTimesNull() {
+                return this.IsNull(this.tableT_Users.ErrorTimesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetErrorTimesNull() {
+                this[this.tableT_Users.ErrorTimesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLastErrorTimeNull() {
+                return this.IsNull(this.tableT_Users.LastErrorTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLastErrorTimeNull() {
+                this[this.tableT_Users.LastErrorTimeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -851,6 +935,8 @@ namespace ImgDownload.DAL.DataSetPicTableAdapters {
             tableMapping.ColumnMappings.Add("UserName", "UserName");
             tableMapping.ColumnMappings.Add("Password", "Password");
             tableMapping.ColumnMappings.Add("Type", "Type");
+            tableMapping.ColumnMappings.Add("ErrorTimes", "ErrorTimes");
+            tableMapping.ColumnMappings.Add("LastErrorTime", "LastErrorTime");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -859,20 +945,25 @@ namespace ImgDownload.DAL.DataSetPicTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_Users] ([UserName], [Password], [Type]) VALUES (@UserName, @Passwo" +
-                "rd, @Type)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [T_Users] ([UserName], [Password], [Type], [ErrorTimes], [LastErrorTi" +
+                "me]) VALUES (@UserName, @Password, @Type, @ErrorTimes, @LastErrorTime)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ErrorTimes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ErrorTimes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastErrorTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastErrorTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [T_Users] SET [UserName] = @UserName, [Password] = @Password, [Type] = @Ty" +
-                "pe WHERE (([Id] = @Original_Id))";
+                "pe, [ErrorTimes] = @ErrorTimes, [LastErrorTime] = @LastErrorTime WHERE (([Id] = " +
+                "@Original_Id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ErrorTimes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ErrorTimes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastErrorTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastErrorTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -893,12 +984,14 @@ namespace ImgDownload.DAL.DataSetPicTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT  T_Users.*\r\nFROM      T_Users\r\nwhere Id=@Id";
+            this._commandCollection[1].CommandText = "SELECT  Id, UserName, Password, Type, ErrorTimes, LastErrorTime\r\nFROM      T_User" +
+                "s\r\nWHERE   (Id = @Id)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT  T_Users.*\r\nFROM      T_Users\r\nWhere UserName=@UserName";
+            this._commandCollection[2].CommandText = "SELECT  Id, UserName, Password, Type, ErrorTimes, LastErrorTime\r\nFROM      T_User" +
+                "s\r\nWHERE   (UserName = @UserName)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserName", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UserName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -1011,7 +1104,7 @@ namespace ImgDownload.DAL.DataSetPicTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string UserName, string Password, global::System.Nullable<int> Type) {
+        public virtual int Insert(string UserName, string Password, global::System.Nullable<int> Type, global::System.Nullable<int> ErrorTimes, global::System.Nullable<global::System.DateTime> LastErrorTime) {
             if ((UserName == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -1029,6 +1122,18 @@ namespace ImgDownload.DAL.DataSetPicTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((ErrorTimes.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(ErrorTimes.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((LastErrorTime.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(LastErrorTime.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1050,7 +1155,7 @@ namespace ImgDownload.DAL.DataSetPicTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string UserName, string Password, global::System.Nullable<int> Type, int Original_Id) {
+        public virtual int Update(string UserName, string Password, global::System.Nullable<int> Type, global::System.Nullable<int> ErrorTimes, global::System.Nullable<global::System.DateTime> LastErrorTime, int Original_Id) {
             if ((UserName == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -1069,7 +1174,19 @@ namespace ImgDownload.DAL.DataSetPicTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
+            if ((ErrorTimes.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(ErrorTimes.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((LastErrorTime.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(LastErrorTime.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
