@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+</head>
+<body>
+    您没有登录！
+    页面将在<div class="timer">5</div>秒后跳转到登录页面。
+    如果没有跳转请点击<a href="Default.aspx">登录页面</a>
+    <script type="text/javascript">
+        var timer = document.getElementsByClassName("timer")[0].innerHTML;
+        var t = setInterval(function () {
+            if (timer == 0) {
+                clearInterval(t);
+                window.location.href = "/Default.aspx";
+            }
+            document.getElementsByClassName("timer")[0].innerHTML = timer;
+            timer = timer - 1;
+        }, 1000)
+
+    </script>
+</body>
+</html>

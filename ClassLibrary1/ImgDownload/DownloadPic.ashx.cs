@@ -20,7 +20,7 @@ namespace ImgDownload
 
             if (context.Session["IsLogin"] == null)
             {
-                context.Response.Redirect("Default.aspx");
+                context.Response.Redirect("Redirect2Login.html");
             }
             else
             {

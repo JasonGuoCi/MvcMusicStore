@@ -123,6 +123,7 @@
     <Content Include="Imgs\1.jpg" />
     <Content Include="Imgs\2.png" />
     <Content Include="Imgs\3.jpg" />
+    <Content Include="Redirect2Login.html" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
