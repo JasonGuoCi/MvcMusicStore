@@ -40,6 +40,12 @@ namespace ImgDownload
                 else
                 {
                     lblErrorMsg.Text = "密码错误，登录失败";
+                   
+                    //if (string.IsNullOrEmpty(user.LastErrorTime.ToString()) || string.IsNullOrEmpty(user.ErrorTimes.ToString()) || user.ErrorTimes == 0)
+                    //{
+                    //    user.LastErrorTime = DateTime.Now;
+                    //    user.ErrorTimes = 0;
+                    //}
                     DateTime lastErrorTime = user.LastErrorTime;
                     DateTime nowTime = DateTime.Now;
                     TimeSpan timespan = nowTime - lastErrorTime;
@@ -53,8 +59,8 @@ namespace ImgDownload
                     {
                         user.ErrorTimes = 0;
                     }
-                    
 
+                    adapter.Update(user);
                 }
             }
         }
