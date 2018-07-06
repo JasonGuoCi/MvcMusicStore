@@ -41,8 +41,13 @@ namespace JExe.Test
             //gt.GreetPeople("jason");
 
             Heater heater = new Heater();
-            heater.BoilWater();
 
+            Alarm alarm = new Alarm();
+            heater.BoilEvent += alarm.MakeAlert;
+            heater.BoilEvent += (new Alarm()).MakeAlert;
+            heater.BoilEvent += Display.ShowMsg;
+
+            heater.BoilWater();
 
             Console.ReadKey();
         }
