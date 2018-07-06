@@ -26,6 +26,10 @@ namespace JExe.Test
             //int i = 10;
             //al.Add(i);
             //string l = (string)al[0];
+
+            DelegateTest gt = new DelegateTest();
+            gt.GreetPeople("Jason", EnglingGreeting);
+            gt.GreetPeople("小小", ChineseGreeting);
             Console.ReadKey();
         }
 
@@ -33,6 +37,16 @@ namespace JExe.Test
         {
             if (num < 1) return false;
             return (num & num - 1) == 0;
+        }
+
+        private static void EnglingGreeting(string name)
+        {
+            Console.Write("Hello " + name);
+        }
+
+        private static void ChineseGreeting(string name)
+        {
+            Console.Write("你好 " + name);
         }
     }
 }
