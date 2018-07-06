@@ -28,8 +28,12 @@ namespace JExe.Test
             //string l = (string)al[0];
 
             DelegateTest gt = new DelegateTest();
-            gt.GreetPeople("Jason", EnglingGreeting);
-            gt.GreetPeople("小小", ChineseGreeting);
+            //gt.GreetPeople("Jason", EnglingGreeting);
+            //gt.GreetPeople("小小", ChineseGreeting);
+            GreetingDelegate gd;
+            gd = EnglingGreeting;
+            gd += ChineseGreeting;
+            gt.GreetPeople("Jason", gd);
             Console.ReadKey();
         }
 
