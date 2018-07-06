@@ -43,10 +43,16 @@ namespace JExe.Test
             Heater heater = new Heater();
 
             Alarm alarm = new Alarm();
-            heater.BoilEvent += alarm.MakeAlert;
-            heater.BoilEvent += (new Alarm()).MakeAlert;
-            heater.BoilEvent += Display.ShowMsg;
+            //heater.BoilEvent += alarm.MakeAlert;
+            //heater.BoilEvent += (new Alarm()).MakeAlert;
+            //heater.BoilEvent += Display.ShowMsg;
 
+            heater.Boiled += alarm.MakeAlert;
+            heater.Boiled += (new Alarm()).MakeAlert;
+            heater.Boiled += new Heater.BoiledEventHandler(alarm.MakeAlert);
+            //也可以这么注册
+
+            heater.Boiled += Display.ShowMsg;
             heater.BoilWater();
 
             Console.ReadKey();

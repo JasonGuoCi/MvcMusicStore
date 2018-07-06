@@ -12,9 +12,25 @@ namespace JExe.Test
     public class Heater
     {
         private int temperature;//水温
+        public string type = "RealFile 001";//增加型号
+        public string area = "China Shanghai";//增加地区
 
-        public delegate void BoilHandler(int parm);//声明委托
-        public event BoilHandler BoilEvent;//声明事件
+        //public delegate void BoilHandler(int parm);//声明委托
+        //public event BoilHandler BoilEvent;//声明事件
+
+        //声明委托
+        public delegate void BoiledEventHandler(Object sender, BoiledEventArgs args);
+        public event BoiledEventHandler Boiled;//声明事件
+
+        // 可以供继承自 Heater 的类重写，以便继承类拒绝其他对象对它的监视
+        protected virtual void OnBoiled(BoiledEventArgs e)
+        {
+            if (Boiled != null)
+            {
+                Boiled(this, e);// 调用所有注册对象的方法
+            }
+        }
+
 
 
         //烧水
@@ -25,10 +41,15 @@ namespace JExe.Test
                 temperature = i;
                 if (temperature > 95)
                 {
-                    if (BoilEvent != null)//如果有对象注册
-                    {
-                        BoilEvent(temperature);//调用注册的对象
-                    }
+                    //建立BoiledEventArgs 对象
+                    BoiledEventArgs e = new BoiledEventArgs(temperature);
+                    OnBoiled(e);// 调用 OnBolied方法
+
+
+                    //if (BoilEvent != null)//如果有对象注册
+                    //{
+                    //    BoilEvent(temperature);//调用注册的对象
+                    //}
                     // MakeAlert(temperature);
                     //ShowMsg(temperature);
                 }

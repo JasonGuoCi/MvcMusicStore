@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alarm.cs" />
+    <Compile Include="BoiledEventArgs.cs" />
     <Compile Include="DelegateTest.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="Heater.cs" />
