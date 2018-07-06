@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JExe.Test
@@ -40,21 +41,37 @@ namespace JExe.Test
             //gt.GreetPeople("Jason", gt.gd);
             //gt.GreetPeople("jason");
 
-            Heater heater = new Heater();
+            //Heater heater = new Heater();
 
-            Alarm alarm = new Alarm();
+            //Alarm alarm = new Alarm();
             //heater.BoilEvent += alarm.MakeAlert;
             //heater.BoilEvent += (new Alarm()).MakeAlert;
             //heater.BoilEvent += Display.ShowMsg;
 
-            heater.Boiled += alarm.MakeAlert;
-            heater.Boiled += (new Alarm()).MakeAlert;
-            heater.Boiled += new Heater.BoiledEventHandler(alarm.MakeAlert);
-            //也可以这么注册
+            //heater.Boiled += alarm.MakeAlert;
+            //heater.Boiled += (new Alarm()).MakeAlert;
+            //heater.Boiled += new Heater.BoiledEventHandler(alarm.MakeAlert);
+            ////也可以这么注册
 
-            heater.Boiled += Display.ShowMsg;
-            heater.BoilWater();
+            //heater.Boiled += Display.ShowMsg;
+            //heater.BoilWater();
 
+
+
+            Console.WriteLine("Client application started!\n");
+            Thread.CurrentThread.Name = "Main Thread";
+            Calculator cal = new Calculator();
+            int result = cal.Add(2, 5);
+            Console.WriteLine("Result: {0}\n", result);
+
+            // 做某些其他的事情，模拟需要执行3秒钟
+            for (int i = 1; i <= 3; i++)
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(i));
+                Console.WriteLine("{0}: Client executed {1} second(s).",
+                Thread.CurrentThread.Name, i);
+            }
+            Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
         }
 
