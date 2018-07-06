@@ -12,14 +12,15 @@ namespace JExe.Test
         //{
         //    MakeGreeting(name);
         //}
-        public GreetingDelegate gd;
+        public event GreetingDelegate gd;
 
         public void GreetPeople(string name)
         {
-            if (gd != null)
-            {
-                gd(name);
-            }
+            gd(name);
+            //if (gd != null)
+            //{
+            //    gd(name);
+            //}
         }
     }
 

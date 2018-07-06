@@ -33,7 +33,7 @@ namespace JExe.Test
             //GreetingDelegate gd;
             //gd = EnglingGreeting;
             //gd += ChineseGreeting;
-            gt.gd = EnglingGreeting;
+            //gt.gd = EnglingGreeting;
             gt.gd += ChineseGreeting;
             //gt.GreetPeople("Jason", gt.gd);
             gt.GreetPeople("jason");
