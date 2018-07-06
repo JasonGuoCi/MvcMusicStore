@@ -30,10 +30,13 @@ namespace JExe.Test
             DelegateTest gt = new DelegateTest();
             //gt.GreetPeople("Jason", EnglingGreeting);
             //gt.GreetPeople("小小", ChineseGreeting);
-            GreetingDelegate gd;
-            gd = EnglingGreeting;
-            gd += ChineseGreeting;
-            gt.GreetPeople("Jason", gd);
+            //GreetingDelegate gd;
+            //gd = EnglingGreeting;
+            //gd += ChineseGreeting;
+            gt.gd = EnglingGreeting;
+            gt.gd += ChineseGreeting;
+            //gt.GreetPeople("Jason", gt.gd);
+            gt.GreetPeople("jason");
             Console.ReadKey();
         }
 
