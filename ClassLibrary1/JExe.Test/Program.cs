@@ -27,16 +27,23 @@ namespace JExe.Test
             //al.Add(i);
             //string l = (string)al[0];
 
-            DelegateTest gt = new DelegateTest();
+
+            ///Delegate test
+            //DelegateTest gt = new DelegateTest();
             //gt.GreetPeople("Jason", EnglingGreeting);
             //gt.GreetPeople("小小", ChineseGreeting);
             //GreetingDelegate gd;
             //gd = EnglingGreeting;
             //gd += ChineseGreeting;
             //gt.gd = EnglingGreeting;
-            gt.gd += ChineseGreeting;
+            //gt.gd += ChineseGreeting;
             //gt.GreetPeople("Jason", gt.gd);
-            gt.GreetPeople("jason");
+            //gt.GreetPeople("jason");
+
+            Heater heater = new Heater();
+            heater.BoilWater();
+
+
             Console.ReadKey();
         }
 
