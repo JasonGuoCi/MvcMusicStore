@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -77,11 +78,21 @@ namespace JExe.Test
                 Thread.CurrentThread.Name, i);
             }
 
-            int rtn = del.EndInvoke(asyncResult);
+            //int rtn = del.EndInvoke(asyncResult);
+
+            int rtn = GetResult(asyncResult);
             Console.WriteLine("Result: {0}\n", rtn);
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
+        }
+
+        static int GetResult(IAsyncResult asyncResult)
+        {
+            AsyncResult result = (AsyncResult)asyncResult;
+            AddDelegate del = (AddDelegate)result.AsyncDelegate;
+            int rtn = del.EndInvoke(asyncResult);
+            return rtn;
         }
 
         private static bool GetFlag(int num)
