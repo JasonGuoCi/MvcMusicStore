@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static JExe.Test.Calculator;
 
 namespace JExe.Test
 {
@@ -60,9 +61,13 @@ namespace JExe.Test
 
             Console.WriteLine("Client application started!\n");
             Thread.CurrentThread.Name = "Main Thread";
+
             Calculator cal = new Calculator();
-            int result = cal.Add(2, 5);
-            Console.WriteLine("Result: {0}\n", result);
+
+            AddDelegate del = new AddDelegate(cal.Add);
+            IAsyncResult asyncResult = del.BeginInvoke(2, 5, null, null);// 异步调用方法
+            //int result = cal.Add(2, 5);
+            //Console.WriteLine("Result: {0}\n", result);
 
             // 做某些其他的事情，模拟需要执行3秒钟
             for (int i = 1; i <= 3; i++)
@@ -71,6 +76,10 @@ namespace JExe.Test
                 Console.WriteLine("{0}: Client executed {1} second(s).",
                 Thread.CurrentThread.Name, i);
             }
+
+            int rtn = del.EndInvoke(asyncResult);
+            Console.WriteLine("Result: {0}\n", rtn);
+
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
         }

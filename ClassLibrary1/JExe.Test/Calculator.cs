@@ -26,5 +26,6 @@ namespace JExe.Test
             Console.WriteLine("Method complete!");
             return x + y;
         }
+        public delegate int AddDelegate(int x, int y);
     }
 }
