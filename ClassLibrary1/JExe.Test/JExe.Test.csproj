@@ -49,8 +49,11 @@
     <Compile Include="DelegateTest.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="Heater.cs" />
+    <Compile Include="Observer模式不使用委托\Alarm2.cs" />
+    <Compile Include="Observer模式不使用委托\Heater2.cs" />
     <Compile Include="Observer模式不使用委托\IObservable.cs" />
     <Compile Include="Observer模式不使用委托\IObserver.cs" />
+    <Compile Include="Observer模式不使用委托\Screen.cs" />
     <Compile Include="Observer模式不使用委托\SubjectBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

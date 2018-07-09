@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JExe.Test.Observer模式不使用委托;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,29 +60,45 @@ namespace JExe.Test
             //heater.BoilWater();
 
 
+            /*
+                        Console.WriteLine("Client application started!\n");
+                        Thread.CurrentThread.Name = "Main Thread";
 
-            Console.WriteLine("Client application started!\n");
-            Thread.CurrentThread.Name = "Main Thread";
+                        Calculator cal = new Calculator();
 
-            Calculator cal = new Calculator();
+                        AddDelegate del = new AddDelegate(cal.Add);
+                        IAsyncResult asyncResult = del.BeginInvoke(2, 5, null, null);// 异步调用方法
+                        //int result = cal.Add(2, 5);
+                        //Console.WriteLine("Result: {0}\n", result);
 
-            AddDelegate del = new AddDelegate(cal.Add);
-            IAsyncResult asyncResult = del.BeginInvoke(2, 5, null, null);// 异步调用方法
-            //int result = cal.Add(2, 5);
-            //Console.WriteLine("Result: {0}\n", result);
+                        // 做某些其他的事情，模拟需要执行3秒钟
+                        for (int i = 1; i <= 3; i++)
+                        {
+                            Thread.Sleep(TimeSpan.FromSeconds(i));
+                            Console.WriteLine("{0}: Client executed {1} second(s).",
+                            Thread.CurrentThread.Name, i);
+                        }
 
-            // 做某些其他的事情，模拟需要执行3秒钟
-            for (int i = 1; i <= 3; i++)
-            {
-                Thread.Sleep(TimeSpan.FromSeconds(i));
-                Console.WriteLine("{0}: Client executed {1} second(s).",
-                Thread.CurrentThread.Name, i);
-            }
+                        //int rtn = del.EndInvoke(asyncResult);
 
-            //int rtn = del.EndInvoke(asyncResult);
+                        int rtn = GetResult(asyncResult);
+                        Console.WriteLine("Result: {0}\n", rtn);
+            */
 
-            int rtn = GetResult(asyncResult);
-            Console.WriteLine("Result: {0}\n", rtn);
+            Heater2 heater2 = new Heater2();
+            Alarm2 alarm2 = new Alarm2();
+            Screen screen = new Screen();
+
+            heater2.Register(screen);//注册显示器
+            heater2.Register(alarm2);//注册警报器
+
+            heater2.BoilWater();//烧水
+            heater2.Unregister(alarm2);//取消报警器的注册
+
+
+            Console.WriteLine();
+            heater2.BoilWater();//再烧一次 
+
 
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
