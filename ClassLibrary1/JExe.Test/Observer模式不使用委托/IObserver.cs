@@ -8,6 +8,6 @@ namespace JExe.Test.Observer模式不使用委托
 {
     public interface IObserver
     {
-        void Update(BoiledEventArgs2 e);// 事件触发时由Subject调用，更新自身状态
+        void Update(IObservable sender);// 事件触发时由Subject调用，更新自身状态
     }
 }

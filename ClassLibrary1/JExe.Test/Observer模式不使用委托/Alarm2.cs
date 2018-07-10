@@ -9,7 +9,7 @@ namespace JExe.Test.Observer模式不使用委托
     public class Alarm2 : IObserver
     {
 
-        public void Update(BoiledEventArgs2 e)
+        public void Update(IObservable obj)
         {
             Console.WriteLine("Alarm".PadRight(7) + "：嘟嘟嘟，水温快烧开了。");
         }
