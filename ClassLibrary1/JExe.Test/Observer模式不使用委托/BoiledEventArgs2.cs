@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace JExe.Test.Observer模式不使用委托
 {
+    /// <summary>
+    /// Observer 推模式
+    /// </summary>
     public class BoiledEventArgs2
     {
         private int temperature;
