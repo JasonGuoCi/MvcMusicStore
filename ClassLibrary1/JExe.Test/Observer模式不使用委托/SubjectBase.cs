@@ -21,11 +21,11 @@ namespace JExe.Test.Observer模式不使用委托
         }
 
         // 通知所有注册了的Observer
-        protected virtual void Notify()
+        protected virtual void Notify(BoiledEventArgs2 e)
         {
             foreach (IObserver observer in container)
             {
-                observer.Update();// 调用Observer的Update()}
+                observer.Update(e);// 调用Observer的Update()}
 
             }
         }

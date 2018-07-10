@@ -35,9 +35,9 @@ namespace JExe.Test.Observer模式不使用委托
         public Heater2() : this("RealFile 001", "China Shanghai") { }
 
         // 供子类覆盖，以便子类拒绝被通知，或添加额外行为
-        public virtual void OnBoiled()
+        public virtual void OnBoiled(BoiledEventArgs2 e)
         {
-            base.Notify(); //调用父类Notify()方法，进而调用所有注册了Observer的Update()方法
+            base.Notify(e); //调用父类Notify()方法，进而调用所有注册了Observer的Update()方法
         }
 
         public void BoilWater()
@@ -47,7 +47,8 @@ namespace JExe.Test.Observer模式不使用委托
                 temprature = i + 1;
                 if (temprature > 97)
                 {
-                    OnBoiled();
+                    BoiledEventArgs2 e = new BoiledEventArgs2(type, area, temprature);
+                    OnBoiled(e);
                 }
             }
         }

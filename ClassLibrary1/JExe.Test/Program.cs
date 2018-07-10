@@ -86,14 +86,14 @@ namespace JExe.Test
             */
 
             Heater2 heater2 = new Heater2();
-            Alarm2 alarm2 = new Alarm2();
+            //Alarm2 alarm2 = new Alarm2();
             Screen screen = new Screen();
 
             heater2.Register(screen);//注册显示器
-            heater2.Register(alarm2);//注册警报器
+            //heater2.Register(alarm2);//注册警报器
 
             heater2.BoilWater();//烧水
-            heater2.Unregister(alarm2);//取消报警器的注册
+            //heater2.Unregister(alarm2);//取消报警器的注册
 
 
             Console.WriteLine();

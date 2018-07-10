@@ -50,6 +50,7 @@
     <Compile Include="Display.cs" />
     <Compile Include="Heater.cs" />
     <Compile Include="Observer模式不使用委托\Alarm2.cs" />
+    <Compile Include="Observer模式不使用委托\BoiledEventArgs2.cs" />
     <Compile Include="Observer模式不使用委托\Heater2.cs" />
     <Compile Include="Observer模式不使用委托\IObservable.cs" />
     <Compile Include="Observer模式不使用委托\IObserver.cs" />
