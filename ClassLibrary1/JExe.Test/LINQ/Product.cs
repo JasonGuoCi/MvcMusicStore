@@ -8,6 +8,7 @@ namespace JExe.Test.LINQ
 {
     public class Product
     {
+        //
         public int Id { get; set; }//序号
         public string Code { get; set; }//产品编号
         public string Name { get; set; }//产品名称
