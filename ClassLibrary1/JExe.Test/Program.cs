@@ -85,21 +85,26 @@ namespace JExe.Test
                         Console.WriteLine("Result: {0}\n", rtn);
             */
 
-            Heater2 heater2 = new Heater2();
-            //Alarm2 alarm2 = new Alarm2();
-            Screen screen = new Screen();
+            //Heater2 heater2 = new Heater2();
+            ////Alarm2 alarm2 = new Alarm2();
+            //Screen screen = new Screen();
 
-            heater2.Register(screen);//注册显示器
-            //heater2.Register(alarm2);//注册警报器
+            //heater2.Register(screen);//注册显示器
+            ////heater2.Register(alarm2);//注册警报器
 
-            heater2.BoilWater();//烧水
-            //heater2.Unregister(alarm2);//取消报警器的注册
-
-
-            Console.WriteLine();
-            heater2.BoilWater();//再烧一次 
+            //heater2.BoilWater();//烧水
+            ////heater2.Unregister(alarm2);//取消报警器的注册
 
 
+            //Console.WriteLine();
+            //heater2.BoilWater();//再烧一次 
+
+            string str = "Hello, readers";
+            byte[] data = HashAlgorithmEx.SHA1Algorithm(str);
+            foreach (byte item in data)
+            {
+                Console.Write("{0:X2}", item);
+            }
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
         }

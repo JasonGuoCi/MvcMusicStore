@@ -48,7 +48,10 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="DelegateTest.cs" />
     <Compile Include="Display.cs" />
+    <Compile Include="HashAlgorithmEx.cs" />
     <Compile Include="Heater.cs" />
+    <Compile Include="LINQ\Product.cs" />
+    <Compile Include="LINQ\ProductCollection.cs" />
     <Compile Include="Observer模式不使用委托\Alarm2.cs" />
     <Compile Include="Observer模式不使用委托\BoiledEventArgs2.cs" />
     <Compile Include="Observer模式不使用委托\Heater2.cs" />
