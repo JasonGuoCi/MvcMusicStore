@@ -11,7 +11,8 @@ namespace JExe.Test
     {
         public static byte[] SHA1Algorithm(string str)
         {
-            HashAlgorithm alg = HashAlgorithm.Create("SHA1");
+            //HashAlgorithm alg = HashAlgorithm.Create("SHA1");
+            SHA1Managed alg = new SHA1Managed();
             byte[] plainText = Encoding.Default.GetBytes(str);
 
             byte[] hashData = alg.ComputeHash(plainText);
