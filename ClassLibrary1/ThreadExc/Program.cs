@@ -11,9 +11,11 @@ namespace ThreadExc
     {
         static void Main(string[] args)
         {
-            ThreadStart ts = new ThreadStart(ThreadEntity);
-            Thread worker = new Thread(ts);
-            worker.Start();
+            // ThreadStart ts = new ThreadStart(ThreadEntity);
+            ParameterizedThreadStart pts = new ParameterizedThreadStart(ThreadEntity);
+            string test = "test with parameter";
+            Thread worker = new Thread(pts);
+            worker.Start(test);
             Console.WriteLine("Main Thread end"); ;
             Console.ReadKey();
         }
@@ -22,6 +24,11 @@ namespace ThreadExc
         {
 
             Console.WriteLine("thread end");
+        }
+        static void ThreadEntity(object o)
+        {
+            string test = (string)o;
+            Console.WriteLine("thread end " + test);
         }
     }
 }
