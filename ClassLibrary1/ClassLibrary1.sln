@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerConsole", "ServerCons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientConsole", "ClientConsole\ClientConsole.csproj", "{FD0937C5-904D-4777-90BD-1DD1DD8E899B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadExc", "ThreadExc\ThreadExc.csproj", "{01EE8E00-C7CB-4EFA-B3D9-3A5E94533561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{FD0937C5-904D-4777-90BD-1DD1DD8E899B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD0937C5-904D-4777-90BD-1DD1DD8E899B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD0937C5-904D-4777-90BD-1DD1DD8E899B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01EE8E00-C7CB-4EFA-B3D9-3A5E94533561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01EE8E00-C7CB-4EFA-B3D9-3A5E94533561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01EE8E00-C7CB-4EFA-B3D9-3A5E94533561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01EE8E00-C7CB-4EFA-B3D9-3A5E94533561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
