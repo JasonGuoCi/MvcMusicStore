@@ -68,7 +68,8 @@ namespace NetCoreTest.Controllers
         /// </summary>
         /// <param name="love"></param>
         /// <returns></returns>
-        [HttpGet]
+
+        [HttpGet("love")]
         public IEnumerable<string> Get(Love love)
         {
             return new string[] { "value1", "value2" };
