@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreTest.Model;
 
 namespace NetCoreTest.Controllers
 {
@@ -60,6 +61,17 @@ namespace NetCoreTest.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        /// <summary>
+        /// Love 实体的调用
+        /// </summary>
+        /// <param name="love"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public IEnumerable<string> Get(Love love)
+        {
+            return new string[] { "value1", "value2" };
         }
     }
 }

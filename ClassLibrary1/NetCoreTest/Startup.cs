@@ -59,7 +59,9 @@ namespace NetCoreTest
                 //获取xml配置文件
                 var basePath = PlatformServices.Default.Application.ApplicationBasePath;
                 var xmlPath = Path.Combine(basePath, "NetCoreTest.xml");//build中生成的xml文件
+                var xmlModelPath = Path.Combine(basePath, "NetCoreTest.Model.xml");//NetCore.Model引用
                 c.IncludeXmlComments(xmlPath, true);//默认的第二个参数是false，这个是controller的注释，记得修改
+                c.IncludeXmlComments(xmlModelPath);
             });
             #endregion
         }
