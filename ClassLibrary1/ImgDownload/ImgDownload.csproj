@@ -101,6 +101,7 @@
     <Content Include="DAL\DataSetPic.xsc">
       <DependentUpon>DataSetPic.xsd</DependentUpon>
     </Content>
+    <Content Include="code.ashx" />
     <None Include="DAL\DataSetPic.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -124,11 +125,16 @@
     <Content Include="Imgs\2.png" />
     <Content Include="Imgs\3.jpg" />
     <Content Include="Redirect2Login.html" />
+    <Content Include="Register.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="code.ashx.cs">
+      <DependentUpon>code.ashx</DependentUpon>
+    </Compile>
     <Compile Include="DAL\DataSetPic.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +151,13 @@
       <DependentUpon>DownloadPic.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
