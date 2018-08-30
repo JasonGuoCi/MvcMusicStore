@@ -12,6 +12,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using Microsoft.Extensions.Caching.Memory;
+using NetCoreTest.AuthHelper;
 
 namespace NetCoreTest
 {
@@ -58,7 +59,7 @@ namespace NetCoreTest
                 });
 
                 //获取xml配置文件
-                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;//获取dll所在的路径
                 var xmlPath = Path.Combine(basePath, "NetCoreTest.xml");//build中生成的xml文件
                 var xmlModelPath = Path.Combine(basePath, "NetCoreTest.Model.xml");//NetCore.Model引用
                 c.IncludeXmlComments(xmlPath, true);//默认的第二个参数是false，这个是controller的注释，记得修改
@@ -113,7 +114,7 @@ namespace NetCoreTest
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+
 
             //添加Swagger
             #region Swagger
@@ -124,6 +125,10 @@ namespace NetCoreTest
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
             });
             #endregion
+
+            app.UseMiddleware<TokenAuth>();
+
+            app.UseMvc();
         }
     }
 }

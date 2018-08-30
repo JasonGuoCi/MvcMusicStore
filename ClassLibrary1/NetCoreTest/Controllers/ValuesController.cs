@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreTest.Model;
 
@@ -11,6 +12,7 @@ namespace NetCoreTest.Controllers
     /// 
     /// </summary>
     [Route("api/[controller]")]
+    [Authorize(Policy = "Admin")]
     public class ValuesController : Controller
     {
         /// <summary>
